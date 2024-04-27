@@ -1,0 +1,435 @@
+.login-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+  margin-left: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+label {
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form-group button {
+  float: right;
+  background-color: rgb(161, 214, 161);
+}
+
+.App-login {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*Navbar*/
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(19, 230, 19);
+  max-width: 900px;
+}
+
+.link {
+  padding: 20px;
+  background-color: rgb(20, 185, 235);
+  border-radius: 12px;
+  justify-content: space-evenly;
+  color: white;
+  text-shadow: 2px 2px black;
+
+}
+
+.link:hover {
+  background-color: white;
+  color: black;
+  text-shadow: 0px 0px black;
+}
+.logout{
+  background-color: white;
+  width: 70px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 12px;
+  color: black;
+}
+.logout:hover{
+  background-color: rgb(20, 185, 235);
+  color: white;
+}
+
+
+/*Index*/
+.index-body {
+  max-width: 700px;
+}
+
+
+
+/*UserIndex*/
+.App-home {
+  max-width: 900px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.App-home>#contact {
+  align-items: center;
+  margin: 0 auto;
+}
+
+#social-media {
+  text-align: right;
+
+}
+
+#social-media li {
+  list-style-type: none;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+
+
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+
+}
+
+label {
+  font-size: 15px;
+}
+
+.inputs {
+  height: 20px;
+}
+
+.form-inputs button {
+  width: 70px;
+  padding: 2px;
+  margin-top: 10px;
+}
+
+
+
+
+/*Aktivnost*/
+.aktivnost {
+  max-width: 900px;
+  background-color: white;
+  background-image: url(https://www.adiva.hr/wp-content/uploads/2023/12/volontiranje.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  border: 1px solid black;
+  
+}
+.padding{
+  padding: 50px;
+}
+.App-active {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 30px;
+}
+.table {
+  background-color: rgb(253, 246, 246, 0.5);
+  border-collapse: collapse;
+  text-align: center;
+  color: rgba(0, 0, 0, 1);
+}
+.card{
+  width: 700px;
+  border: 1px solid black;
+}
+.dodaj {
+  font-size: 15px;
+  width: 100px;
+  margin-top: 20px;
+  background-color: rgb(20, 185, 235);
+  color: white;
+}
+.dodaj:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+th{
+  font-size: 18px
+}
+td{
+  font-size: 15px;
+}
+.td{
+  width: 70px;
+  padding: 4px;
+}
+.justify{
+  padding-right: 40px;
+}
+tr:hover{
+  background-color: rgb(141, 213, 235);
+  cursor: pointer;
+}
+select,
+option {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  margin-top: 30px;
+}
+
+
+
+/*Modal*/
+.secondary {
+  background-color: rgb(94, 172, 17);
+  color: white;
+  float: right;
+}
+
+.danger {
+  background-color: red;
+  color: white;
+ 
+}
+.margin{
+  margin-left: 20px;
+}
+.float{
+  float: right;
+}
+.secondary:hover {
+  background-color: rgb(94, 172, 17);
+  color: white;
+  border: 1px solid white;
+}
+
+.danger:hover {
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 80px;
+  border: 1px solid black;
+  border-radius: 12px;
+  
+}
+
+.modal-title {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+  
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  
+}
+.modal-form>label,.modal-form>input {
+  margin-top: 5px;
+  text-align: center;
+}
+.modal-form>input,textarea{
+  border: 1px solid black;
+  padding: 5px;
+}
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+.button {
+  width: 100px;
+  font-size: 10px;
+  margin-top: 10px;
+  background-color: rgb(110, 245, 110);
+  align-self: center;
+
+}
+.modal-form-podaci{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding-right: 60px;
+}
+.modal-form-podaci>.sign{
+  padding: 6px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.modal-form-podaci>input,.modal-form-volonter>input{
+  font-size: 15px;
+}
+.modal-title-podaci{
+  text-align: center;
+  padding: 0px;
+}
+.modal-form-volonter{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding-right: 60px;
+}
+
+
+/*Footer*/
+.App-footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: rgb(19, 230, 19);
+  margin-top: 50px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.footer-link {
+  font-size: 11px;
+  color: black;
+  padding: 2px;
+}
+
+.footer-link:hover {
+  color: white;
+  background-color: black;
+  width: fit-content;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+span {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#social-media {
+  margin-top: 100px;
+  margin-right: -50px;
+
+}
+
+.linkedin:hover,
+.github:hover {
+  transform: scale(1.2);
+}
+
+
+/*Udruge*/
+
+.table2 {
+  background-color: rgba(224, 42, 42, 0.7);
+  border-collapse: collapse;
+  text-align: center;
+  color: rgb(248, 245, 245, 1);
+}
+
+
+/*Volonter*/
+th{
+  background-color: rgb(20, 185, 235);
+  color: white;
+}
+.edit{
+  background-color: rgb(19, 230, 19);
+}
+.edit:hover{
+  background-color: rgb(19, 230, 19);
+  border: 1px solid white;
+}
+.delete-footer{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding-right: 60px;
+}
+.delete-header,.delete-body{
+  padding-right: 150px;
+}
+.delete-body{
+  margin-left: 100px;
+}
+.filt{
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  color: white;
+  padding: 12px;
+  width: min-content;
+  border-radius: 12px;
+  align-items: center;
+  margin-left: 30px;
+  background-color: rgb(20, 185, 235);
+}
+.filt>p{
+  margin-bottom: -20px;
+}
+option,select{
+  font-size: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.buttons{
+  width: 220px;
+  
+}
+input,select{
+  border: 1px solid black;
+}

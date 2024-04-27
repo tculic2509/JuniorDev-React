@@ -1,0 +1,382 @@
+{
+  "aktivnosti": [
+    {
+      "id": "1",
+      "naziv": "Čišćenje okoliša",
+      "opis": "Organiziranje akcije čišćenja okoliša u suradnji s lokalnom zajednicom radi očuvanja prirode i ljepote okoliša.",
+      "datum": "2024-06-10",
+      "grad": "Zagreb",
+      "udruga": "Društvo Zeleni svijet",
+      "lokacija": "Park Maksimir",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ana Horvat"
+        },
+        {
+          "id": "2",
+          "ime": "Marko Kovač"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "naziv": "Radionica o financijskoj pismenosti",
+      "opis": "Organizacija edukativne radionice o financijskoj pismenosti kako bi se ljudima pružile osnovne vještine upravljanja financijama.",
+      "datum": "2024-06-15",
+      "grad": "Osijek",
+      "udruga": "Edukacija za sve",
+      "lokacija": "Centar za mlade",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ivan Petrović"
+        },
+        {
+          "id": "2",
+          "ime": "Katarina Radić"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "naziv": "Radionica o digitalnoj sigurnosti",
+      "opis": "Edukativna radionica o važnosti digitalne sigurnosti, učenje osnovnih mjera zaštite privatnosti na internetu.",
+      "datum": "2024-06-25",
+      "grad": "Split",
+      "udruga": "Društvo za mentalno zdravlje",
+      "lokacija": "Centar za kulturu",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ivana Novak"
+        },
+        {
+          "id": "2",
+          "ime": "Petar Horvat"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "naziv": "Humanitarni koncert",
+      "opis": "Organizacija humanitarnog koncerta s ciljem prikupljanja sredstava za pomoć potrebitima u zajednici.",
+      "datum": "2024-07-01",
+      "grad": "Rijeka",
+      "udruga": "Mreža zajedničke hrane",
+      "lokacija": "Gradski trg",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ivana Marić"
+        },
+        {
+          "id": "2",
+          "ime": "Mario Novak"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "naziv": "Tjedan volontiranja",
+      "opis": "Organizacija različitih volonterskih aktivnosti tijekom tjedna kako bi se pružila pomoć različitim segmentima zajednice.",
+      "datum": "2024-07-05",
+      "grad": "Pula",
+      "udruga": "Edukacija za sve",
+      "lokacija": "Različite lokacije u gradu",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ante Perić"
+        },
+        {
+          "id": "2",
+          "ime": "Ivana Novak"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "naziv": "Obuka prve pomoći",
+      "opis": "Organizacija tečaja prve pomoći za građane kako bi se osposobili za pružanje pomoći u hitnim situacijama.",
+      "datum": "2024-07-25",
+      "grad": "Sisak",
+      "udruga": "Mreža zajedničke hrane",
+      "lokacija": "Dom zdravlja Sisak",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ivana Marić"
+        },
+        {
+          "id": "2",
+          "ime": "Mario Novak"
+        }
+      ]
+    },
+    {
+      "id": "5999",
+      "naziv": "Humanitaran maraton",
+      "opis": "Prikljupanje novaca ",
+      "datum": "2024-05-10",
+      "grad": "Split",
+      "udruga": "Društvo Zeleni svijet",
+      "lokacija": "Park Maksimir",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ana Horvat"
+        },
+        {
+          "id": "2",
+          "ime": "Marko Kovač"
+        }
+      ]
+    }
+  ],
+  "gradovi": [
+    {
+      "id": "1",
+      "grad": "Split"
+    },
+    {
+      "id": "2",
+      "grad": "Makarska"
+    },
+    {
+      "id": "3",
+      "grad": "Šibenik"
+    },
+    {
+      "id": "4",
+      "grad": "Trogir"
+    },
+    {
+      "id": "5",
+      "grad": "Omiš"
+    }
+  ],
+  "vrstaPosla": [
+    {
+      "id": "1",
+      "posao": "Razno"
+    },
+    {
+      "id": "2",
+      "posao": "Građevinski radnik"
+    },
+    {
+      "id": "3",
+      "posao": "Učitelj"
+    },
+    {
+      "id": "4",
+      "posao": "Čistačica"
+    },
+    {
+      "id": "5",
+      "posao": "Prodavač"
+    }
+  ],
+  "volonteri": [
+    {
+      "id": "1",
+      "ime": "Ana Horvat",
+      "email": "ana@example.com",
+      "dob": 28,
+      "telefon": "123-456-7890",
+      "grad": "Omiš",
+      "pripadaUdruga": "Edukacija za sve",
+      "vrstaVolontiranja": "Čistačica"
+    },
+    {
+      "id": "2",
+      "ime": "Marko Kovač",
+      "dob": 35,
+      "email": "marko@example.com",
+      "telefon": "987-654-3210",
+      "grad": "Split",
+      "pripadaUdruga": "Zajednica za pravdu",
+      "vrstaVolontiranja": "Čistačica"
+    },
+    {
+      "id": "3",
+      "ime": "Ivana Novak",
+      "dob": 42,
+      "email": "ivana@example.com",
+      "telefon": "111-222-3333",
+      "grad": "Trogir",
+      "pripadaUdruga": "Društvo za mentalno zdravlje",
+      "vrstaVolontiranja": "Prodavač"
+    },
+    {
+      "id": "4",
+      "ime": "Petar Horvat",
+      "dob": 25,
+      "email": "petar@example.com",
+      "telefon": "444-555-6666",
+      "grad": "Trogir",
+      "pripadaUdruga": "Zajednica za pravdu",
+      "vrstaVolontiranja": "Prodavač"
+    },
+    {
+      "ime": "Marija Kovačić",
+      "email": "marija@example.com",
+      "dob": 31,
+      "telefon": "777-888-9999",
+      "grad": "Omiš",
+      "id": "5",
+      "pripadaUdruga": "Zajednica za pravdu",
+      "vrstaVolontiranja": "Prodavač"
+    },
+    {
+      "id": "6",
+      "ime": "Ivan Petrović",
+      "dob": 40,
+      "email": "ivan@example.com",
+      "telefon": "123-456-7890",
+      "grad": "Makarska",
+      "pripadaUdruga": "Društvo za mentalno zdravlje",
+      "vrstaVolontiranja": "Učitelj"
+    },
+    {
+      "id": "7",
+      "ime": "Katarina Radić",
+      "dob": 29,
+      "email": "katarina@example.com",
+      "telefon": "987-654-3210",
+      "grad": "Split",
+      "pripadaUdruga": "Društvo za mentalno zdravlje",
+      "vrstaVolontiranja": "Građevinski radnik"
+    },
+    {
+      "id": "8",
+      "ime": "Ante Perić",
+      "dob": 36,
+      "email": "ante@example.com",
+      "telefon": "111-222-3333",
+      "grad": "Šibenik",
+      "pripadaUdruga": "Mreža zajedničke hrane",
+      "vrstaVolontiranja": "Razno"
+    },
+    {
+      "id": "9",
+      "ime": "Ivana Marić",
+      "dob": 27,
+      "email": "ivana@example.com",
+      "telefon": "444-555-6666",
+      "grad": "Šibenik",
+      "pripadaUdruga": "Društvo Zeleni svijet",
+      "vrstaVolontiranja": "Razno"
+    },
+    {
+      "id": "10",
+      "ime": "Mario Novak",
+      "dob": 33,
+      "email": "mario@example.com",
+      "telefon": "777-888-9999",
+      "grad": "Split",
+      "pripadaUdruga": "Mreža zajedničke hrane",
+      "vrstaVolontiranja": "Učitelj"
+    },
+    {
+      "id": "11",
+      "ime": "Ana Kovačić",
+      "dob": 39,
+      "email": "ana@example.com",
+      "telefon": "123-456-7890",
+      "grad": "Omiš",
+      "pripadaUdruga": "Društvo Zeleni svijet",
+      "vrstaVolontiranja": "Građevinski radnik"
+    },
+    {
+      "id": "12",
+      "ime": "Marko Radić",
+      "dob": 26,
+      "email": "marko@example.com",
+      "telefon": "987-654-3210",
+      "grad": "Split",
+      "pripadaUdruga": "Edukacija za sve",
+      "vrstaVolontiranja": "Učitelj"
+    }
+  ],
+  "volonterske_udruge": [
+    {
+      "naziv": "Društvo Zeleni svijet",
+      "opis": "Organizacija posvećena očuvanju okoliša i održivosti.",
+      "adresa": "123 Ulica Zelenih Inicijativa",
+      "grad": "Split",
+      "isAdmitted": true,
+      "id": "1"
+    },
+    {
+      "naziv": "Edukacija za sve",
+      "opis": "Neprofitna organizacija usmjerena na pružanje obrazovne podrške socijalno ugroženim zajednicama.",
+      "adresa": "456 Ulica Solidarnosti",
+      "grad": "Imotski",
+      "isAdmitted": true,
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "naziv": "Mreža zajedničke hrane",
+      "opis": "Mreža banaka hrane i volontera koji zajedno rade kako bi ublažili glad u našoj zajednici.",
+      "adresa": "789 Ulica Humanosti",
+      "grad": "Sinj",
+      "isAdmitted": false
+    },
+    {
+      "naziv": "Zajednica za pravdu",
+      "opis": "Organizacija koja se bavi pravnim pitanjima i pruža besplatnu pravnu pomoć zajednici.",
+      "adresa": "1 Ulica Pravde",
+      "grad": "Zagreb",
+      "isAdmitted": true,
+      "id": "4"
+    },
+    {
+      "naziv": "Društvo za mentalno zdravlje",
+      "opis": "Organizacija koja pruža podršku osobama s mentalnim izazovima i promiče mentalno zdravlje.",
+      "adresa": "15 Ulica Nade",
+      "grad": "Rijeka",
+      "isAdmitted": true,
+      "id": "5"
+    }
+  ],
+  "korisnici": [
+    {
+      "id": "1",
+      "isAdmin": true,
+      "ime": "admin",
+      "email": "admin@example.com",
+      "password": "admin"
+    },
+    {
+      "id": "2",
+      "isAdmin": false,
+      "ime": "Ana Horvat",
+      "email": "ana@example.com",
+      "password": "password1"
+    },
+    {
+      "id": "3",
+      "isAdmin": false,
+      "ime": "Marko Kovač",
+      "email": "marko@example.com",
+      "password": "password2"
+    },
+    {
+      "id": "4",
+      "isAdmin": false,
+      "ime": "Ivana Novak",
+      "email": "ivana@example.com",
+      "password": "password3"
+    },
+    {
+      "id": "5",
+      "isAdmin": false,
+      "ime": "Petar Horvat",
+      "email": "petar@example.com",
+      "password": "password4"
+    }
+  ]
+}
