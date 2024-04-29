@@ -11,6 +11,7 @@ import { useLocation, useParams } from 'react-router-dom';
 
 function Aktivnost(props) {
   const [aktivnosti, postaviAktivnosti] = useState([]);
+  const [listaUdruge, postaviListuUdruge] = useState([]);
   const [deleteID, setDeleteID] = useState("");
   const [reload, setReload] = useState(false);
   const [deleteModalShow, setDeleteModalShow] = useState(false);
@@ -51,6 +52,18 @@ function Aktivnost(props) {
       })
       .catch(error => {
         console.error('Greška prilikom dohvaćanja korisnika:', error);
+      });
+  }, []);
+  
+  useEffect(() => {
+    axios.get("http://localhost:8080/volonterske_udruge")
+      .then(resUdruga => {
+        let sortedData = resUdruga.data;
+       
+        postaviListuUdruge(sortedData);
+      })
+      .catch(error => {
+        console.error('Greška prilikom dohvaćanja udruga:', error);
       });
   }, []);
 
@@ -198,7 +211,7 @@ function Aktivnost(props) {
       ime:ime
     };
 
-    axios.post(`http://localhost:8080/aktivnosti/${ID}&sudionici/`,data)
+    axios.post(`http://localhost:8080/aktivnosti/${ID}&sudionici`,data)
       .then(response => {
         alert('Uspješno dodano:', response.data);
         setAssignModalShow(false);
@@ -331,11 +344,19 @@ function Aktivnost(props) {
             <label>Naziv:</label>
             <input type="text" onChange={(e) => postaviNaziv(e.target.value)} />
             <label>Opis:</label>
-            <textarea onChange={(e) => postaviOpis(e.target.value)} />
+            <textarea type="text" onChange={(e) => postaviOpis(e.target.value)} className='text' />
             <label>Datum:</label>
             <input type="date" onChange={(e) => postaviDatum(e.target.value)} />
             <label>Grad:</label>
             <input type="text" onChange={(e) => postaviGrad(e.target.value)} />
+            <label>Udruga:</label>
+            <select value={udruga} className='udrugaSelect' onChange={(e)=>postaviUdruga(e.target.value)}>
+              <option value={""}>------</option>
+              {listaUdruge.map(udruge => (
+                <option key={udruge.id} value={udruge.naziv}>{udruge.naziv}</option>
+              ))}
+              
+            </select>
             <Button type="submit" className='button primary'>
               Dodaj aktivnost
             </Button>
@@ -375,9 +396,11 @@ function Aktivnost(props) {
               ))}
               
             </select>
-            <Button className="danger float" onClick={() => handleDeleteParticipantClick(korisnikID)}>Delete Participant</Button>
+            <div className='modal-buttons'>
+            <div className="danger sign" onClick={() => handleDeleteParticipantClick(korisnikID)}>Delete Participant</div>
             <div className='button primary sign' onClick={() => setAssignModalShow(true)}>
               Prijavi se
+            </div>
             </div>
           </form>
         </Modal.Body>

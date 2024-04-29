@@ -114,7 +114,6 @@ function Udruge() {
       await axios.delete(`http://localhost:8080/volonterske_udruge/${deleteID}`);
       setDeleteModalShow(false);
       setReload(!reload);
-      Swal.fire('Uspješno odobreno!', '', 'success');
     } catch (error) {
       console.error("Greška prilikom brisanja:", error);
     }
@@ -155,7 +154,6 @@ function Udruge() {
 
     axios.post("http://localhost:8080/volonterske_udruge", data)
       .then(response => {
-        Swal('Uspješno dodano:', response.data);
         setAddModalShow(false); // Zatvaramo modal nakon uspješnog dodavanja
         setReload(!reload); // Ponovno učitavanje aktivnosti
         window.location.href = `/udruge/${isAdmin}`;
@@ -261,7 +259,7 @@ function Udruge() {
             <label>Naziv:</label>
             <input type="text" onChange={(e) => postaviNaziv(e.target.value)} />
             <label>Opis:</label>
-            <textarea onChange={(e) => postaviOpis(e.target.value)} />
+            <textarea onChange={(e) => postaviOpis(e.target.value)} className='text' />
             <label>Adresa:</label>
             <input type="text" onChange={(e) => postaviAdresa(e.target.value)} />
             <label>Grad:</label>

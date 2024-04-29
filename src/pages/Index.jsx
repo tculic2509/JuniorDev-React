@@ -29,7 +29,7 @@ function Index() {
                         <label htmlFor="email">E-mail:</label>
                         <input type="email" id="email" name="email" required className='inputs' />
                         <label htmlFor="message">Poruka:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <textarea id="message" name="message" rows="4" required className='text'></textarea>
                         <button type="submit" className='secondary'>Pošalji</button>
                     </div>
                 </form>

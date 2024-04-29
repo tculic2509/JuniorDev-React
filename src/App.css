@@ -270,7 +270,6 @@ option {
 .modal-body {
   display: flex;
   flex-direction: column;
-  
 }
 
 .modal-form {
@@ -303,7 +302,7 @@ option {
   display: flex;
   flex-direction: column;
   width: 250px;
-  padding-right: 60px;
+  
 }
 .modal-form-podaci>.sign{
   padding: 6px;
@@ -324,6 +323,29 @@ option {
   flex-direction: column;
   width: 250px;
   padding-right: 60px;
+}
+.modal-buttons{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  margin: 0 auto;
+
+}
+.sign{
+  width: 150px;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.udrugaSelect{
+  margin: 0px;
+}
+.text{
+  margin-left: 5px;
 }
 
 
@@ -433,3 +455,4 @@ option,select{
 input,select{
   border: 1px solid black;
 }
+
