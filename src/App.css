@@ -147,6 +147,9 @@ label {
   border-radius: 12px;
   box-shadow: 2px 2px 2px 2px black;
 }
+.profilna:hover{
+  transform: scale(1.2);
+}
 .index-about{
   display: flex;
   flex-direction: row;
