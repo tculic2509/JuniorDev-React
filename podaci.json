@@ -39,25 +39,6 @@
       "id": "2"
     },
     {
-      "id": "4",
-      "naziv": "Radionica o digitalnoj sigurnosti",
-      "opis": "Edukativna radionica o važnosti digitalne sigurnosti, učenje osnovnih mjera zaštite privatnosti na internetu.",
-      "datum": "2024-06-25",
-      "grad": "Split",
-      "udruga": "Društvo za mentalno zdravlje",
-      "lokacija": "Centar za kulturu",
-      "sudionici": [
-        {
-          "id": "1",
-          "ime": "Ivana Novak"
-        },
-        {
-          "id": "2",
-          "ime": "Petar Horvat"
-        }
-      ]
-    },
-    {
       "naziv": "Humanitarni koncert",
       "opis": "Organizacija humanitarnog koncerta s ciljem prikupljanja sredstava za pomoć potrebitima u zajednici.",
       "datum": "2024-07-01",
@@ -96,13 +77,12 @@
       ]
     },
     {
-      "id": "0960",
       "naziv": "Spašavanje šuma",
       "opis": "Sadnja novih stabala",
       "datum": "2024-06-07",
       "grad": "Makarska",
       "udruga": "Društvo Zeleni svijet",
-      "lokacija": "",
+      "lokacija": "Riva",
       "sudionici": [
         {
           "naziv": "Čišćenje okoliša",
@@ -199,7 +179,8 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "0960"
     }
   ],
   "gradovi": [

@@ -23,7 +23,7 @@ function Aktivnost() {
   const [lokacija, postaviLokacija] = useState("");
   const [udruga, postaviUdruga] = useState("");
   const [sudionici, postaviSudionici] = useState([]);
-  const [sudionik, postaviSudionika] = useState([]);
+  const [sudionik, postaviSudionika] = useState("");
   const [ime, postaviIme] = useState("");
   const [sortField, setSortField] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -309,6 +309,8 @@ function Aktivnost() {
             <input type="date" value={datum} onChange={(e) => postaviDatum(e.target.value)} />
             <label>Grad:</label>
             <input type="text" value={grad} onChange={(e) => postaviGrad(e.target.value)} />
+            <label>Lokacija:</label>
+            <input type="text" value={lokacija} onChange={(e) => postaviLokacija(e.target.value)} />
             <Button type="submit" className='button primary'>
               Spremi promjene
             </Button>
@@ -338,6 +340,8 @@ function Aktivnost() {
               ))}
 
             </select>
+            <label>Lokacija:</label>
+            <input type="text" onChange={(e) => postaviLokacija(e.target.value)} />
             <Button type="submit" className='button primary'>
               Dodaj aktivnost
             </Button>
@@ -374,7 +378,7 @@ function Aktivnost() {
             <select value={sudionici} readOnly>
               <option value="">Sudionici</option>
               {sudionici.map(sudionik => (
-                <option key={sudionik.id} value={sudionik.email}>{sudionik.ime}</option>
+                <option key={sudionik.id} value={sudionik.ime}>{sudionik.ime}</option>
               ))}
 
             </select>
@@ -408,7 +412,12 @@ function Aktivnost() {
           <Modal.Title>Potvrdi brisanje sudionika</Modal.Title>
         </Modal.Header>
         <Modal.Body className='delete-body'>
-          Jeste sigurni da želite izbrisati sudionika?
+          <select value={sudionik} onChange={(e) => postaviSudionika(e.target.value)}>
+            <option value={""}>------</option>
+            {sudionici.map(sudionik => (
+              <option key={sudionik.id} value={sudionik.ime}>{sudionik.ime}</option>
+            ))}
+          </select>
         </Modal.Body>
         <Modal.Footer className='delete-footer'>
           <Button className="secondary" onClick={() => setDeleteParticipantModalShow(false)}>
