@@ -1,12 +1,10 @@
 import '../App.css'
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Modal, Button, Table, Card } from "react-bootstrap";
+import { Modal, Button, Card } from "react-bootstrap";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { json, useLocation } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Cookies from 'js-cookie';
+import { useLocation } from 'react-router-dom';
 
 function Udruge() {
   const [udruge, setUdruge] = useState([]);
@@ -21,15 +19,12 @@ function Udruge() {
   const [grad, postaviGrad] = useState("");
   const [naziv, postaviNaziv] = useState("");
   const [adresa, postaviAdresa] = useState("");
+  const [opis, postaviOpis] = useState("");
   const [sortField, setSortField] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc"); // or "desc"
   const location = useLocation();
   const [isAdmin, setIsAdmin] = useState(location.state ? location.state.isAdmin : false);
   const [korisnici, setKorisnici] = useState([]);
-
-
-
-
 
   useEffect(() => {
     axios.get("http://localhost:8080/korisnici")
@@ -41,10 +36,7 @@ function Udruge() {
       .catch(error => {
         console.error('Greška prilikom dohvaćanja korisnika:', error);
       });
-  }, []); // Empty dependency array to run this effect only once after the initial render
-
-
-
+  }, []); 
   useEffect(() => {
     axios.get("http://localhost:8080/gradovi")
       .then(res => {
@@ -56,8 +48,6 @@ function Udruge() {
         console.error('Greška prilikom dohvaćanja gradova:', error);
       });
   }, [reload]);
-
-
   useEffect(() => {
     axios.get("http://localhost:8080/volonterske_udruge")
       .then(resUdruge => {
@@ -78,12 +68,10 @@ function Udruge() {
       });
   }, [reload, sortField, sortOrder]);
 
-
   const handleDeleteClick = (contentId) => {
     setDeleteID(contentId);
     setDeleteModalShow(true);
   };
-
   const handleAdmitClick = async (contentId) => {
     try {
       setEditID(contentId);
@@ -107,8 +95,6 @@ function Udruge() {
       window.location.href = `/udruge/${isAdmin}`;
     }
   };
-
-
   const confirmDelete = async () => {
     try {
       await axios.delete(`http://localhost:8080/volonterske_udruge/${deleteID}`);
@@ -118,17 +104,11 @@ function Udruge() {
       console.error("Greška prilikom brisanja:", error);
     }
   };
-
-
-  const admittedUdruge = udruge.filter(udruga => udruga.isAdmitted);
-  const notAdmittedUdruge = udruge.filter(udruga => !udruga.isAdmitted);
-
   const sortingOptions = [
     { value: "naziv", label: "Naziv" },
     { value: "adresa", label: "Adresa" },
     { value: "grad", label: "Grad" }
   ];
-
   const handleSortChange = (e) => {
     const selectedField = e.target.value;
     if (selectedField == sortField) {
@@ -139,7 +119,6 @@ function Udruge() {
       setSortOrder("asc");
     }
   };
-
   const handleAddClick = () => {
     setAddModalShow(true);
   };
@@ -151,11 +130,11 @@ function Udruge() {
       opis: opis,
       grad: grad
     };
-
     axios.post("http://localhost:8080/volonterske_udruge", data)
       .then(response => {
-        setAddModalShow(false); // Zatvaramo modal nakon uspješnog dodavanja
-        setReload(!reload); // Ponovno učitavanje aktivnosti
+        console.log('Uspješno dodano:', response.data);
+        setAddModalShow(false); 
+        setReload(!reload);
         window.location.href = `/udruge/${isAdmin}`;
 
       })
@@ -163,7 +142,8 @@ function Udruge() {
         console.error('Greška prilikom dodavanja:', error);
       });
   }
-
+  const admittedUdruge = udruge.filter(udruga => udruga.isAdmitted);
+  const notAdmittedUdruge = udruge.filter(udruga => !udruga.isAdmitted);
 
   return (
     <div className='aktivnost'>
@@ -189,6 +169,7 @@ function Udruge() {
                 </Card>
               ))}
             </div>
+
             <div className='table2 card'>
               <h3>Zahtjevi za odobrenje</h3>
               {notAdmittedUdruge.map(udruga => (
@@ -207,14 +188,9 @@ function Udruge() {
                           Admit
                         </button>
                       )))}
-
-
-
-
                   </Card.Body>
                 </Card>
               ))}
-
             </div>
           </div>
           <div className='sorting'>
@@ -229,15 +205,13 @@ function Udruge() {
         </div>
 
         <button onClick={() => handleAddClick()} className='dodaj'>Dodaj</button>
-
-
-
       </div>
+
       <Modal show={deleteModalShow} onHide={() => setDeleteModalShow(false)} className="modal">
         <Modal.Header className='delete-header'>
           <Modal.Title>Potvrdi brisanje</Modal.Title>
         </Modal.Header>
-        <Modal.Body className='delete-body'>
+        <Modal.Body className='delete-body width'>
           Jeste sigurni da želite izbrisati aktivnost?
         </Modal.Body>
         <Modal.Footer className='delete-footer'>
@@ -252,10 +226,10 @@ function Udruge() {
 
       <Modal show={addModalShow} onHide={() => setAddModalShow(false)} className="modal" >
         <Modal.Header>
-          <Modal.Title className="modal-title">Dodaj novu aktivnost</Modal.Title>
+          <Modal.Title className="modal-form-udruga modal-form-podaci">Dodaj novu aktivnost</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleAddSubmit} className='modal-form'>
+          <form onSubmit={handleAddSubmit} className='modal-form-udruga modal-form-podaci'>
             <label>Naziv:</label>
             <input type="text" onChange={(e) => postaviNaziv(e.target.value)} />
             <label>Opis:</label>

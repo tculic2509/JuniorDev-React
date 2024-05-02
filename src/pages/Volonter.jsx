@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 
 
 function Volontiranje() {
@@ -26,14 +26,11 @@ function Volontiranje() {
   const [vrstaVolontiranja, setVrstaVolontiranja] = useState("");
   const [poslovi, setPoslovi] = useState([]);
   const location = useLocation();
-  const [isAdmin, setIsAdmin] = useState(location.state ? location.state.isAdmin : false);
   const [filter, setFilter] = useState("");
 
   const handleFilter = (e) => {
     setFilter(e.target.value);
-
   };
-
   const filterData = (data) => {
     if (filter === grad) {
       return data.filter(volonter => volonter.grad === filter);
@@ -41,8 +38,6 @@ function Volontiranje() {
       return data;
     }
   };
-
-
   useEffect(() => {
     axios.get("http://localhost:8080/gradovi")
       .then(res => {
@@ -54,7 +49,6 @@ function Volontiranje() {
         console.error('Greška prilikom dohvaćanja gradova:', error);
       });
   }, [reload]);
-
   useEffect(() => {
     axios.get("http://localhost:8080/vrstaPosla")
       .then(res => {
@@ -66,8 +60,6 @@ function Volontiranje() {
         console.error('Greška prilikom dohvaćanja poslova:', error);
       });
   }, [reload]);
-
-
   useEffect(() => {
     axios.get("http://localhost:8080/volonteri")
       .then(resVolonteri => {
@@ -79,7 +71,6 @@ function Volontiranje() {
         console.error('Greška prilikom dohvaćanja aktivnosti:', error);
       });
   }, [reload]);
-
   useEffect(() => {
     axios.get("http://localhost:8080/korisnici")
       .then(response => {
@@ -91,12 +82,10 @@ function Volontiranje() {
       });
   }, [reload]);
 
-
   const handleDeleteClick = (contentId) => {
     setDeleteID(contentId);
     setDeleteModalShow(true);
   };
-
   const handleEditClick = (contentId) => {
     setEditID(contentId);
     const selectedVolonter = volonteri.find(volontiranje => volontiranje.id === contentId);
@@ -108,7 +97,6 @@ function Volontiranje() {
     setVrstaVolontiranja(selectedVolonter.posao);
     setEditModalShow(true);
   };
-
   const update = async () => {
     try {
       await axios.put(`http://localhost:8080/volonteri/${ID}`, {
@@ -125,8 +113,6 @@ function Volontiranje() {
       console.error("Greška prilikom uređivanja:", error);
     }
   };
-
-
   const confirmDelete = async () => {
     try {
       await axios.delete(`http://localhost:8080/volonteri/${deleteID}`);
@@ -136,7 +122,6 @@ function Volontiranje() {
       console.error("Greška prilikom brisanja:", error);
     }
   };
-
   const handleAddClick = () => {
     setAddModalShow(true);
   };
@@ -151,10 +136,7 @@ function Volontiranje() {
     setVrstaVolontiranja(selectedVolonter.vrstaVolontiranja);
 
     setReadModalShow(true);
-
-
   };
-
   function handleAddSubmit(event) {
     event.preventDefault();
 
@@ -270,6 +252,7 @@ function Volontiranje() {
           </Button>
         </Modal.Footer>
       </Modal>
+
       <Modal show={editModalShow} onHide={() => setEditModalShow(false)} className="modal">
         <Modal.Header>
           <Modal.Title className='modal-form-volonter'>Uredi aktivnost</Modal.Title>
@@ -336,6 +319,7 @@ function Volontiranje() {
           </form>
         </Modal.Body>
       </Modal>
+      
       <Modal show={addModalShow} onHide={() => setAddModalShow(false)} className="modal" >
         <Modal.Header>
           <Modal.Title className="modal-title">Dodaj novu aktivnost</Modal.Title>

@@ -1,31 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isAdmin, setIsAdmin] = useState(false);
-    const [ID, setID] = useState(false);
     const navigate = useNavigate();
 
-  
+
 
     const handleSubmit = (event) => {
-         event.preventDefault();
-         console.log("Form submitted!");
- 
-         // Check if the login credentials are correct
-         if (isAdmin && password === "admin") {
-             alert("Successful login");
-             navigate(`/index/${isAdmin}`,{state:{isAdmin:true}});
-             
-         } else {
-             alert("Regular user login");   
-             navigate(`/index/${isAdmin}`,{state:{isAdmin:false}});
-         }
-         
-     };
+        event.preventDefault();
+        if (isAdmin && password === "admin") {
+            alert("Dobrošao Admin");
+            navigate(`/index/${isAdmin}`, { state: { isAdmin: true } });
+
+        } else {
+            alert("Dobrošao User");
+            navigate(`/index/${isAdmin}`, { state: { isAdmin: false } });
+        }
+
+    };
 
     return (
         <div className='App-login'>

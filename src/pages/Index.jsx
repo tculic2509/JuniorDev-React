@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../App.css";
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import { useLocation } from 'react-router-dom';
 
 function Index() {
-    const location = useLocation();
-    const [isAdmin, setIsAdmin] = useState(location.state ? location.state.isAdmin : false);
-    const [ID, setID] = useState("");
-    
+
+
     return (
         <div className='App-home'>
-                <Navbar />
+            <Navbar />
             <section id="author">
 
                 <h2>O meni</h2>
-                <p>Moj glavni pokretač u životu je obitelj, želja za dokazivanjem, stjecanje znanja i napredovanje. Želim neprestano učiti jer me strastveno zanima područje softverskog i web razvoja. Imam sposobnost brzog usvajanja novih vještina i visok stupanj motivacije.
-
-                    Trenutačno posjedujem vještine u područjima poput C#, Java, SQL, React.js i PHP, a imam i osnovna znanja iz HTML-a i CSS-a.</p>
+                <p>Trenutno sam na trećoj godini u Visokoj školi Aspira, smjer Računarstvo. Imam mogućnost studentskog ugovora, kao i odrađivanje stručne prakse. Tijekom studija sam sudjelovao u nekoliko projekata koji su mi omogućili razvoj svojih programerskih  vještina. Kao npr.: WordPress (Elementor), C#, .NET, Java, PHP, JavaScript, MySQL i naprednije poznavanje HTML-a, CSS-a, React.js-a. Jedan od projekata mi je bio, korištenjem HTML-a, CSS-a, JavaScripta, PHP-a i baze podataka kreirati neki kviz. Zadnjih mjesec dana sam vanjski suradnik firmi Omnylynx, koristeći WordPress i React.js.</p>
             </section>
 
             <section id="contact">

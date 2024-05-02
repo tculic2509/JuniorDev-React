@@ -403,6 +403,14 @@ span {
   text-align: center;
   color: rgb(248, 245, 245, 1);
 }
+.modal-form-udruga{
+  display: flex;
+  flex-direction: column;
+  padding-right: 60px;
+}
+.width{
+  width: 200px;
+}
 
 
 /*Volonter*/

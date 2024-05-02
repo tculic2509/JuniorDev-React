@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState} from 'react';
 import github from "../assets/github.png"
 import linkedin from "../assets/linkedin.png"
 import { Link, useParams } from 'react-router-dom';

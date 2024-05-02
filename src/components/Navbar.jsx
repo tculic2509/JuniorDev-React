@@ -1,7 +1,6 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
-function Navbar(props) {
+function Navbar() {
     const { id, isAdmin } = useParams();
     const [isAdminState, setIsAdminState] = useState(isAdmin === 'true');
 

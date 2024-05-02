@@ -1,15 +1,12 @@
 import '../App.css'
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
-import Udruge from "./Udruge";
-import Volonter from "./Volonter";
-import { Modal, Button, Table, Card } from "react-bootstrap";
+import { Modal, Button, Table } from "react-bootstrap";
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-function Aktivnost(props) {
+function Aktivnost() {
   const [aktivnosti, postaviAktivnosti] = useState([]);
   const [listaUdruge, postaviListuUdruge] = useState([]);
   const [deleteID, setDeleteID] = useState("");
@@ -29,15 +26,12 @@ function Aktivnost(props) {
   const [sudionik, postaviSudionika] = useState([]);
   const [ime, postaviIme] = useState("");
   const [sortField, setSortField] = useState(null);
-  const [sortOrder, setSortOrder] = useState("asc"); // or "desc"
-  const location = useLocation();
+  const [sortOrder, setSortOrder] = useState("asc");
   const [korisnici, setKorisnici] = useState([]);
   const [admin, setAdmin] = useState(false);
   const { id, isAdmin } = useParams();
-  const [isAdminState, setIsAdminState] = useState(isAdmin);
   const [readModalShow, setReadModalShow] = useState(false);
   const [korisnikID, setKorisnikID] = useState("");
-
   const [deleteParticipantModalShow, setDeleteParticipantModalShow] = useState(false);
   const [participantToDelete, setParticipantToDelete] = useState(null);
 
@@ -54,20 +48,17 @@ function Aktivnost(props) {
         console.error('Greška prilikom dohvaćanja korisnika:', error);
       });
   }, []);
-  
   useEffect(() => {
     axios.get("http://localhost:8080/volonterske_udruge")
       .then(resUdruga => {
         let sortedData = resUdruga.data;
-       
+
         postaviListuUdruge(sortedData);
       })
       .catch(error => {
         console.error('Greška prilikom dohvaćanja udruga:', error);
       });
   }, []);
-
-
   useEffect(() => {
     axios.get("http://localhost:8080/aktivnosti")
       .then(resAktivnosti => {
@@ -85,14 +76,13 @@ function Aktivnost(props) {
         console.error('Greška prilikom dohvaćanja aktivnosti:', error);
       });
   }, [sortField, sortOrder]);
-
   useEffect(() => {
     axios.get(`http://localhost:8080/aktivnosti/${ID}?sudionici?${korisnikID}`)
       .then(response => {
         const sudionici = response.data;
         postaviSudionici(sudionici);
         postaviSudionika(sudionici.sudionici);
-        
+
       })
       .catch(error => {
         console.error('Greška prilikom dohvaćanja aktivnosti:', error);
@@ -105,7 +95,6 @@ function Aktivnost(props) {
     setDeleteID(contentId);
     setDeleteModalShow(true);
   };
-
   const handleEditClick = (contentId) => {
     setEditID(contentId);
     const selectedAktivnost = aktivnosti.find(aktivnost => aktivnost.id === contentId);
@@ -146,7 +135,6 @@ function Aktivnost(props) {
       console.error("Greška prilikom brisanja:", error);
     }
   };
-
   const handleAddClick = () => {
     setAddModalShow(true);
   };
@@ -201,17 +189,14 @@ function Aktivnost(props) {
 
 
   };
-
-  
- 
   function handleAssign(event) {
     event.preventDefault();
-    
+
     const data = {
-      ime:ime
+      ime: ime
     };
 
-    axios.post(`http://localhost:8080/aktivnosti/${ID}&sudionici`,data)
+    axios.post(`http://localhost:8080/aktivnosti/${ID}&sudionici`, data)
       .then(response => {
         alert('Uspješno dodano:', response.data);
         setAssignModalShow(false);
@@ -222,7 +207,6 @@ function Aktivnost(props) {
         console.error('Greška prilikom dodavanja:', error);
       });
   }
-  
   const handleDeleteParticipantClick = (contentId) => {
     setParticipantToDelete(contentId);
     setDeleteParticipantModalShow(true);
@@ -230,9 +214,6 @@ function Aktivnost(props) {
   const confirmDeleteParticipant = async () => {
     try {
       await axios.delete(`http://localhost:8080/aktivnosti/${ID}?sudionici/${participantToDelete}`);
-
-
-      // Close the modal and reload data
       setDeleteParticipantModalShow(false);
       setReload(!reload);
     } catch (error) {
@@ -282,9 +263,6 @@ function Aktivnost(props) {
               </tbody>
             </Table>
 
-
-
-
           </div>
 
           <div className='sorting'>
@@ -299,6 +277,7 @@ function Aktivnost(props) {
         <button onClick={() => handleAddClick()} className='dodaj'>Dodaj</button>
 
       </div>
+
       <Modal show={deleteModalShow} onHide={() => setDeleteModalShow(false)} className="modal">
         <Modal.Header className='delete-header'>
           <Modal.Title>Potvrdi brisanje</Modal.Title>
@@ -315,6 +294,7 @@ function Aktivnost(props) {
           </Button>
         </Modal.Footer>
       </Modal>
+
       <Modal show={editModalShow} onHide={() => setEditModalShow(false)} className="modal">
         <Modal.Header>
           <Modal.Title className='modal-form-podaci'>Uredi aktivnost</Modal.Title>
@@ -335,6 +315,7 @@ function Aktivnost(props) {
           </form>
         </Modal.Body>
       </Modal>
+
       <Modal show={addModalShow} onHide={() => setAddModalShow(false)} className="modal" >
         <Modal.Header>
           <Modal.Title className="modal-form-podaci">Dodaj novu aktivnost</Modal.Title>
@@ -350,12 +331,12 @@ function Aktivnost(props) {
             <label>Grad:</label>
             <input type="text" onChange={(e) => postaviGrad(e.target.value)} />
             <label>Udruga:</label>
-            <select value={udruga} className='udrugaSelect' onChange={(e)=>postaviUdruga(e.target.value)}>
+            <select value={udruga} className='udrugaSelect' onChange={(e) => postaviUdruga(e.target.value)}>
               <option value={""}>------</option>
               {listaUdruge.map(udruge => (
                 <option key={udruge.id} value={udruge.naziv}>{udruge.naziv}</option>
               ))}
-              
+
             </select>
             <Button type="submit" className='button primary'>
               Dodaj aktivnost
@@ -363,7 +344,8 @@ function Aktivnost(props) {
           </form>
         </Modal.Body>
       </Modal>
-      <Footer />
+
+
       <Modal show={readModalShow} onHide={() => setReadModalShow(false)} className="modal">
         <Modal.Header>
           <Modal.Title className='modal-title-podaci'>Podaci</Modal.Title>
@@ -394,17 +376,18 @@ function Aktivnost(props) {
               {sudionici.map(sudionik => (
                 <option key={sudionik.id} value={sudionik.email}>{sudionik.ime}</option>
               ))}
-              
+
             </select>
             <div className='modal-buttons'>
-            <div className="danger sign" onClick={() => handleDeleteParticipantClick(korisnikID)}>Delete Participant</div>
-            <div className='button primary sign' onClick={() => setAssignModalShow(true)}>
-              Prijavi se
-            </div>
+              <div className="danger sign" onClick={() => handleDeleteParticipantClick(korisnikID)}>Delete Participant</div>
+              <div className='button primary sign' onClick={() => setAssignModalShow(true)}>
+                Prijavi se
+              </div>
             </div>
           </form>
         </Modal.Body>
       </Modal>
+
       <Modal show={assignModalShow} onHide={() => setAssignModalShow(false)} className="modal">
         <Modal.Header className='delete-header'>
           <Modal.Title>Prijavi se</Modal.Title>
@@ -419,22 +402,25 @@ function Aktivnost(props) {
           </form>
         </Modal.Body>
       </Modal>
+
       <Modal show={deleteParticipantModalShow} onHide={() => setDeleteParticipantModalShow(false)} className="modal">
-          <Modal.Header className='delete-header'>
-            <Modal.Title>Potvrdi brisanje sudionika</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className='delete-body'>
-            Jeste sigurni da želite izbrisati sudionika?
-          </Modal.Body>
-          <Modal.Footer className='delete-footer'>
-            <Button className="secondary" onClick={() => setDeleteParticipantModalShow(false)}>
-              Odustani
-            </Button>
-            <Button className="danger" onClick={confirmDeleteParticipant}>
-              Obriši
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <Modal.Header className='delete-header'>
+          <Modal.Title>Potvrdi brisanje sudionika</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='delete-body'>
+          Jeste sigurni da želite izbrisati sudionika?
+        </Modal.Body>
+        <Modal.Footer className='delete-footer'>
+          <Button className="secondary" onClick={() => setDeleteParticipantModalShow(false)}>
+            Odustani
+          </Button>
+          <Button className="danger" onClick={confirmDeleteParticipant}>
+            Obriši
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Footer />
     </div>
   )
 }
