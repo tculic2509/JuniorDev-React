@@ -36,7 +36,7 @@ function Udruge() {
       .catch(error => {
         console.error('Greška prilikom dohvaćanja korisnika:', error);
       });
-  }, []); 
+  }, []);
   useEffect(() => {
     axios.get("http://localhost:8080/gradovi")
       .then(res => {
@@ -133,7 +133,7 @@ function Udruge() {
     axios.post("http://localhost:8080/volonterske_udruge", data)
       .then(response => {
         console.log('Uspješno dodano:', response.data);
-        setAddModalShow(false); 
+        setAddModalShow(false);
         setReload(!reload);
         window.location.href = `/udruge/${isAdmin}`;
 
@@ -181,8 +181,8 @@ function Udruge() {
                     <Card.Text><strong>Grad: </strong> {udruga.grad}</Card.Text>
                     <Button className="danger float" onClick={() => handleDeleteClick(udruga.id)}>Delete</Button>
 
-                      {korisnici.map(user => (
-                      user.isAdmin == true && user.id=="1" && (
+                    {korisnici.map(user => (
+                      user.isAdmin == true && user.id == "1" && (
                         //problem kod prikazivanja botuna samo adminu, prikazuje se konstatno svima ili nikome zavisno o uvjetu
                         <button key={user.id} onClick={() => handleAdmitClick(udruga.id)} className='secondary'>
                           Admit
@@ -226,7 +226,7 @@ function Udruge() {
 
       <Modal show={addModalShow} onHide={() => setAddModalShow(false)} className="modal" >
         <Modal.Header>
-          <Modal.Title className="modal-form-udruga modal-form-podaci">Dodaj novu aktivnost</Modal.Title>
+          <Modal.Title className="modal-form-udruga modal-form-podaci">Dodaj novu udrugu</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleAddSubmit} className='modal-form-udruga modal-form-podaci'>

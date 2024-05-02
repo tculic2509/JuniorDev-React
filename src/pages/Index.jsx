@@ -2,9 +2,9 @@ import React from 'react';
 import "../App.css";
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-
+import Profil from '../assets/profil_slika.jpg';
 function Index() {
-
+    const pdfUrl = 'https://example.com/your-document.pdf';
 
     return (
         <div className='App-home'>
@@ -12,9 +12,11 @@ function Index() {
             <section id="author">
 
                 <h2>O meni</h2>
-                <p>Trenutno sam na trećoj godini u Visokoj školi Aspira, smjer Računarstvo. Imam mogućnost studentskog ugovora, kao i odrađivanje stručne prakse. Tijekom studija sam sudjelovao u nekoliko projekata koji su mi omogućili razvoj svojih programerskih  vještina. Kao npr.: WordPress (Elementor), C#, .NET, Java, PHP, JavaScript, MySQL i naprednije poznavanje HTML-a, CSS-a, React.js-a. Jedan od projekata mi je bio, korištenjem HTML-a, CSS-a, JavaScripta, PHP-a i baze podataka kreirati neki kviz. Zadnjih mjesec dana sam vanjski suradnik firmi Omnylynx, koristeći WordPress i React.js.</p>
+                <div className='index-about'>
+                <img src={Profil} className='profilna'></img>
+                <p><span className='about'></span>Ja sam Toni Čulić i trenutno sam na trećoj godini u Visokoj školi Aspira, smjer Računarstvo. Imam mogućnost studentskog ugovora, kao i odrađivanje stručne prakse. Tijekom studija sam sudjelovao u nekoliko projekata koji su mi omogućili razvoj svojih programerskih  vještina. Kao npr.: WordPress (Elementor), C#, .NET, Java, PHP, JavaScript, MySQL i naprednije poznavanje HTML-a, CSS-a, React.js-a. Jedan od projekata mi je bio, korištenjem HTML-a, CSS-a, JavaScripta, PHP-a i baze podataka kreirati neki kviz. Zadnjih mjesec dana sam vanjski suradnik firmi Omnylynx, koristeći WordPress i React.js. U linku se nalaze neki od moji projekata koje sam napravio u zadnjih dvije godine.&nbsp;<a href='https://github.com/tculic2509?tab=repositories'>Link</a></p>
+                </div>
             </section>
-
             <section id="contact">
                 <h2>Kontakt</h2>
                 <form action="" method="post">
