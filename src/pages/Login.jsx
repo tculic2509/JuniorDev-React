@@ -12,11 +12,11 @@ function LoginForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (isAdmin && password === "admin") {
-            alert("Dobrošao Admin");
+            alert("Dobrodošao Admin");
             navigate(`/index/${isAdmin}`, { state: { isAdmin: true } });
 
         } else {
-            alert("Dobrošao User");
+            alert("Dobrodošao User");
             navigate(`/index/${isAdmin}`, { state: { isAdmin: false } });
         }
 
