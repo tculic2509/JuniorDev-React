@@ -241,7 +241,7 @@ function Aktivnost() {
                   <th>Naziv</th>
                   <th>Datum</th>
                   <th>Grad</th>
-                  {Array.isArray(admin) && admin.filter(user => user.isAdmin === true) && <th>Opcije</th>}
+                  {isAdmin=="true" && <th>Opcije</th>}
 
                 </tr>
               </thead>
@@ -251,7 +251,7 @@ function Aktivnost() {
                     <td onClick={() => handleRead(aktivnost.id)} className='td'>{aktivnost.naziv}</td>
                     <td onClick={() => handleRead(aktivnost.id)} className='td'>{aktivnost.datum}</td>
                     <td onClick={() => handleRead(aktivnost.id)} className='td'>{aktivnost.grad}</td>
-                    {admin && (
+                    {isAdmin=="true" && (
                       <td className="td justify">
                         <Button className="danger float margin" onClick={() => handleDeleteClick(aktivnost.id)}>Delete</Button>
                         <Button className="secondary" onClick={() => handleEditClick(aktivnost.id)}>Edit</Button>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Modal, Button, Card } from "react-bootstrap";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useLocation } from 'react-router-dom';
+import { useLocation,useParams } from 'react-router-dom';
 
 function Udruge() {
   const [udruge, setUdruge] = useState([]);
@@ -23,7 +23,7 @@ function Udruge() {
   const [sortField, setSortField] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc"); // or "desc"
   const location = useLocation();
-  const [isAdmin, setIsAdmin] = useState(location.state ? location.state.isAdmin : false);
+  const { id, isAdmin } = useParams();
   const [korisnici, setKorisnici] = useState([]);
 
   useEffect(() => {
@@ -181,13 +181,11 @@ function Udruge() {
                     <Card.Text><strong>Grad: </strong> {udruga.grad}</Card.Text>
                     <Button className="danger float" onClick={() => handleDeleteClick(udruga.id)}>Delete</Button>
 
-                    {korisnici.map(user => (
-                      user.isAdmin == true && user.id == "1" && (
-                        //problem kod prikazivanja botuna samo adminu, prikazuje se konstatno svima ili nikome zavisno o uvjetu
-                        <button key={user.id} onClick={() => handleAdmitClick(udruga.id)} className='secondary'>
+                    {isAdmin=="true" && (
+                        <button onClick={() => handleAdmitClick(udruga.id)} className='secondary'>
                           Admit
                         </button>
-                      )))}
+                      )}
                   </Card.Body>
                 </Card>
               ))}

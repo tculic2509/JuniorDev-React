@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useLocation} from 'react-router-dom';
+import { useLocation,useParams } from 'react-router-dom';
 
 
 function Volontiranje() {
@@ -26,6 +26,7 @@ function Volontiranje() {
   const [vrstaVolontiranja, setVrstaVolontiranja] = useState("");
   const [poslovi, setPoslovi] = useState([]);
   const location = useLocation();
+  const {id, isAdmin}=useParams();
   const [filter, setFilter] = useState("");
 
   const handleFilter = (e) => {
@@ -163,7 +164,7 @@ function Volontiranje() {
 
   return (
     <div className='aktivnost'>
-          <Navbar />
+      <Navbar />
       <div className='App-active'>
         <div className='flex'>
 
@@ -180,7 +181,7 @@ function Volontiranje() {
                   <th>Ime</th>
                   <th>Dob</th>
                   <th>Grad</th>
-                  <th>Opcije</th>
+                  {isAdmin=="true" && <th>Opcije</th>}
                 </tr>
               </thead>
               <tbody>
@@ -190,10 +191,15 @@ function Volontiranje() {
                       <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
                       <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
                       <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
-                      <td className="buttons">
-                        <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
-                        <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
-                      </td>
+
+                      {isAdmin == "true" && (
+                        <td className="buttons">
+                          <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
+                          <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
+                        </td>
+                      )}
+
+
                     </tr>
                   ))
                 ) : (
@@ -203,10 +209,12 @@ function Volontiranje() {
                         <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
                         <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
                         <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
+                        {isAdmin == "true" && (
                         <td className="buttons">
                           <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
                           <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
                         </td>
+                      )}
                       </tr>
                     ))
                   )
@@ -217,13 +225,12 @@ function Volontiranje() {
           </div>
         </div>
 
-        {korisnici.map(korisnik => (
-          <div key={korisnik.id}>
-            {korisnik.isAdmin && (
+      
+            {isAdmin=="true" && (
               <Button onClick={handleAddClick} className='dodaj'>Dodaj</Button>
             )}
-          </div>
-        ))}
+          
+        
       </div>
       <div className='filt'>
         <p>Filtriraj: </p>
@@ -319,7 +326,7 @@ function Volontiranje() {
           </form>
         </Modal.Body>
       </Modal>
-      
+
       <Modal show={addModalShow} onHide={() => setAddModalShow(false)} className="modal" >
         <Modal.Header>
           <Modal.Title className="modal-title modal-form-udruga">Dodaj novu aktivnost</Modal.Title>
