@@ -5,9 +5,9 @@ import { Modal, Button, Table } from "react-bootstrap";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLocation, useParams } from 'react-router-dom';
+import StarRating from '../components/Stars';
 
-
-function Volontiranje() {
+function Volontiranje({ postaviOcjenu }) {
   const [volonteri, setVolonteri] = useState([]);
   const [korisnici, setKorisnici] = useState([]);
   const [deleteID, setDeleteID] = useState("");
@@ -30,6 +30,13 @@ function Volontiranje() {
   const [filter, setFilter] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [filteredVolonters, setFilteredVolonters] = useState([]);
+  const [avgOcjene, setAvgOcjene] = useState({});
+  const [ocjene, setOcjene] = useState({});
+
+  const handleSetOcjena = (volonterId, ocjena) => {
+    setOcjene({ ...ocjene, [volonterId]: ocjena });
+    postaviOcjenu(volonterId, ocjena); 
+  };
 
   function search(searchTerm) {
     setSearchValue(searchTerm);
@@ -93,7 +100,12 @@ function Volontiranje() {
         console.error('Greška prilikom dohvaćanja korisnika:', error);
       });
   }, [reload]);
-
+  useEffect(() => {
+    const ocjeneArray = Object.values(ocjene);
+    const sum = ocjeneArray.reduce((acc, curr) => acc + curr, 0);
+    const avg = ocjeneArray.length > 0 ? sum / ocjeneArray.length : 0;
+    setAvgOcjene(avg.toFixed(2)); // Zaokruži prosjek na dvije decimale
+  }, [ocjene]);
   const handleDeleteClick = (contentId) => {
     setDeleteID(contentId);
     setDeleteModalShow(true);
@@ -179,7 +191,7 @@ function Volontiranje() {
       <div className='App-active'>
         <div className='flex'>
           <label htmlFor="search" className="searchBar">
-            Pronađi: &nbsp;
+            Pronađi po imenu: &nbsp;
             <input
               id="search"
               type="text"
@@ -205,56 +217,37 @@ function Volontiranje() {
                 </tr>
               </thead>
               <tbody>
-                {
-                  filter ? (
-                    // Filtered rendering based on `filter` state
-                    filterData(filteredVolonters).map(volonter => (
-                      <tr key={volonter.id}>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
-                        {isAdmin === "true" && ( // Display buttons only if user is admin
-                          <td className="buttons">
-                            <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
-                            <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
-                          </td>
-                        )}
-                      </tr>
-                    ))
-                  ) : filter === "" ? (
-                    filteredVolonters.map(volonter => (
-                      <tr key={volonter.id}>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
-                        {isAdmin === "true" && ( 
-                          <td className="buttons">
-                            <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
-                            <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
-                          </td>
-                        )}
-                      </tr>
-                    ))
-                  ) : searchValue ? (
-                    filteredVolonters.map(volonter => (
-                      <tr key={volonter.id}>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
-                        <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
-                        {isAdmin === "true" && (
-                          <td className="buttons">
-                            <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
-                            <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
-                          </td>
-                        )}
-                      </tr>
-                    ))
-                  ) : null 
+                {filter && filteredVolonters.length > 0 ? (
+                  filterData(filteredVolonters).map(volonter => (
+                    <tr key={volonter.id}>
+                      <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
+                      <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
+                      <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
+
+                      {isAdmin === "true" && (
+                        <td className="buttons">
+                          <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
+                          <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
+                        </td>
+                      )}
+                    </tr>
+                  ))
+                ) : (volonteri.filter(volonter => volonter.ime.toLowerCase().includes(searchValue.toLowerCase()))
+                  .map(volonter => (
+                    <tr key={volonter.id}>
+                      <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
+                      <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
+                      <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
+                      {isAdmin === "true" && (
+                        <td className="buttons">
+                          <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
+                          <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
+                        </td>
+                      )}
+                    </tr>
+                  ))
+                )
                 }
-
-
-
-
               </tbody>
             </Table >
           </div>
@@ -325,7 +318,10 @@ function Volontiranje() {
                 <option key={job.id} value={job.posao}>{job.posao}</option>
               ))}
             </select>
-
+            <StarRating
+              ocjena={ocjene[ID] || 0}
+              postaviOcjenu={(ocjena) => handleSetOcjena(ID, ocjena)} 
+            />
 
             <Button type="submit" className='button primary'>
               Spremi promjene
@@ -357,7 +353,6 @@ function Volontiranje() {
 
             <label>Posao:</label>
             <input type="text" value={vrstaVolontiranja} readOnly />
-
           </form>
         </Modal.Body>
       </Modal>
@@ -393,9 +388,7 @@ function Volontiranje() {
                 <option key={job.id} value={job.posao}>{job.posao}</option>
               ))}
             </select>
-
-
-
+           
             <Button type="submit" className='button primary sign'>
               Dodaj aktivnost
             </Button>

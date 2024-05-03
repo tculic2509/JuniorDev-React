@@ -26,13 +26,13 @@ h2 {
 input {
   margin-bottom: 10px;
   margin-left: 5px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
 
 label {
   font-size: 20px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .form-group button {
@@ -478,7 +478,7 @@ th{
 }
 option,select{
   font-size: 15px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .buttons{
   width: 220px;
@@ -487,4 +487,6 @@ option,select{
 input,select{
   border: 1px solid black;
 }
-
+.searchBar{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

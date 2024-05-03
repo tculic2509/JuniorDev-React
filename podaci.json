@@ -180,14 +180,13 @@
   ],
   "volonteri": [
     {
-      "id": "1",
       "ime": "Ana Horvat",
       "email": "ana@example.com",
       "dob": 28,
       "telefon": "123-456-7890",
       "grad": "Omiš",
-      "pripadaUdruga": "Edukacija za sve",
-      "vrstaVolontiranja": "Čistačica"
+      "posao": "Prodavač",
+      "id": "1"
     },
     {
       "id": "2",
@@ -197,7 +196,14 @@
       "telefon": "987-654-3210",
       "grad": "Split",
       "pripadaUdruga": "Zajednica za pravdu",
-      "vrstaVolontiranja": "Čistačica"
+      "vrstaVolontiranja": "Čistačica",
+      "ocjene": [
+        5,
+        4,
+        5,
+        3
+      ],
+      "prosjekOcjena": 4.3
     },
     {
       "id": "3",
@@ -207,7 +213,13 @@
       "telefon": "111-222-3333",
       "grad": "Trogir",
       "pripadaUdruga": "Društvo za mentalno zdravlje",
-      "vrstaVolontiranja": "Prodavač"
+      "vrstaVolontiranja": "Prodavač",
+      "ocjene": [
+        2,
+        3,
+        2
+      ],
+      "prosjekOcjena": 2.3
     },
     {
       "id": "4",
@@ -217,7 +229,13 @@
       "telefon": "444-555-6666",
       "grad": "Trogir",
       "pripadaUdruga": "Zajednica za pravdu",
-      "vrstaVolontiranja": "Prodavač"
+      "vrstaVolontiranja": "Prodavač",
+      "ocjene": [
+        2,
+        3,
+        2
+      ],
+      "prosjekOcjena": 2.3
     },
     {
       "ime": "Marija Kovačić",
@@ -225,9 +243,8 @@
       "dob": 31,
       "telefon": "777-888-9999",
       "grad": "Omiš",
-      "id": "5",
-      "pripadaUdruga": "Zajednica za pravdu",
-      "vrstaVolontiranja": "Prodavač"
+      "posao": "Građevinski radnik",
+      "id": "5"
     },
     {
       "id": "6",
@@ -237,7 +254,14 @@
       "telefon": "123-456-7890",
       "grad": "Makarska",
       "pripadaUdruga": "Društvo za mentalno zdravlje",
-      "vrstaVolontiranja": "Učitelj"
+      "vrstaVolontiranja": "Učitelj",
+      "ocjene": [
+        5,
+        4,
+        5,
+        3
+      ],
+      "prosjekOcjena": 4.3
     },
     {
       "id": "7",
@@ -247,7 +271,14 @@
       "telefon": "987-654-3210",
       "grad": "Split",
       "pripadaUdruga": "Društvo za mentalno zdravlje",
-      "vrstaVolontiranja": "Građevinski radnik"
+      "vrstaVolontiranja": "Građevinski radnik",
+      "ocjene": [
+        5,
+        4,
+        5,
+        3
+      ],
+      "prosjekOcjena": 4.3
     },
     {
       "id": "8",
@@ -257,7 +288,14 @@
       "telefon": "111-222-3333",
       "grad": "Šibenik",
       "pripadaUdruga": "Mreža zajedničke hrane",
-      "vrstaVolontiranja": "Razno"
+      "vrstaVolontiranja": "Razno",
+      "ocjene": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "prosjekOcjena": 5
     },
     {
       "id": "9",
@@ -267,7 +305,14 @@
       "telefon": "444-555-6666",
       "grad": "Šibenik",
       "pripadaUdruga": "Društvo Zeleni svijet",
-      "vrstaVolontiranja": "Razno"
+      "vrstaVolontiranja": "Razno",
+      "ocjene": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "prosjekOcjena": 5
     },
     {
       "id": "10",
@@ -277,7 +322,14 @@
       "telefon": "777-888-9999",
       "grad": "Split",
       "pripadaUdruga": "Mreža zajedničke hrane",
-      "vrstaVolontiranja": "Učitelj"
+      "vrstaVolontiranja": "Učitelj",
+      "ocjene": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "prosjekOcjena": 5
     },
     {
       "id": "11",
@@ -287,7 +339,14 @@
       "telefon": "123-456-7890",
       "grad": "Omiš",
       "pripadaUdruga": "Društvo Zeleni svijet",
-      "vrstaVolontiranja": "Građevinski radnik"
+      "vrstaVolontiranja": "Građevinski radnik",
+      "ocjene": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "prosjekOcjena": 4
     },
     {
       "id": "12",
@@ -297,7 +356,14 @@
       "telefon": "987-654-3210",
       "grad": "Split",
       "pripadaUdruga": "Edukacija za sve",
-      "vrstaVolontiranja": "Učitelj"
+      "vrstaVolontiranja": "Učitelj",
+      "ocjene": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "prosjekOcjena": 2
     }
   ],
   "volonterske_udruge": [
