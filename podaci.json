@@ -20,25 +20,6 @@
       ]
     },
     {
-      "id": "2",
-      "naziv": "Radionica o financijskoj pismenosti",
-      "opis": "Organizacija edukativne radionice o financijskoj pismenosti kako bi se ljudima pružile osnovne vještine upravljanja financijama.",
-      "datum": "2024-06-15",
-      "grad": "Osijek",
-      "udruga": "Edukacija za sve",
-      "lokacija": "Centar za mlade",
-      "sudionici": [
-        {
-          "id": "1",
-          "ime": "Ivan Petrović"
-        },
-        {
-          "id": "2",
-          "ime": "Katarina Radić"
-        }
-      ]
-    },
-    {
       "id": "4",
       "naziv": "Radionica o digitalnoj sigurnosti",
       "opis": "Edukativna radionica o važnosti digitalne sigurnosti, učenje osnovnih mjera zaštite privatnosti na internetu.",

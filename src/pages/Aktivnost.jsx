@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import { useParams } from 'react-router-dom';
+import { json, useParams } from 'react-router-dom';
 
 function Aktivnost() {
   const [aktivnosti, postaviAktivnosti] = useState([]);
@@ -23,6 +23,7 @@ function Aktivnost() {
   const [lokacija, postaviLokacija] = useState("");
   const [udruga, postaviUdruga] = useState("");
   const [sudionici, postaviSudionici] = useState([]);
+  const [stavi, postavi] = useState([]);
   const [sudionik, postaviSudionika] = useState("");
   const [ime, postaviIme] = useState("");
   const [sortField, setSortField] = useState(null);
@@ -41,8 +42,6 @@ function Aktivnost() {
         const korisniciData = response.data;
         setKorisnici(korisniciData);
         setAdmin(korisniciData.filter(korisnik => korisnik.isAdmin === true));
-        setKorisnikID(korisniciData.map(korisnik => korisnik.id));
-
       })
       .catch(error => {
         console.error('Greška prilikom dohvaćanja korisnika:', error);
@@ -54,6 +53,18 @@ function Aktivnost() {
         let sortedData = resUdruga.data;
 
         postaviListuUdruge(sortedData);
+      })
+      .catch(error => {
+        console.error('Greška prilikom dohvaćanja udruga:', error);
+      });
+  }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:8080/aktivnosti/1?`)
+      .then(resSudionici => {
+        let sortedData = resSudionici.data;
+        const sudioniciData = sortedData.sudionici;
+        postavi(sudioniciData);
+        //alert(JSON.stringify(sudioniciData));
       })
       .catch(error => {
         console.error('Greška prilikom dohvaćanja udruga:', error);
@@ -76,18 +87,6 @@ function Aktivnost() {
         console.error('Greška prilikom dohvaćanja aktivnosti:', error);
       });
   }, [sortField, sortOrder]);
-  useEffect(() => {
-    axios.get(`http://localhost:8080/aktivnosti/${ID}&sudionici/${korisnikID}`)
-      .then(response => {
-        const sudionici = response.data;
-        postaviSudionici(sudionici);
-        postaviSudionika(sudionici);
-      })
-      .catch(error => {
-        console.error('Greška prilikom dohvaćanja aktivnosti:', error);
-      });
-  }, []);
-
 
 
   const handleDeleteClick = (contentId) => {
@@ -195,7 +194,11 @@ function Aktivnost() {
       ime: ime
     };
 
-    axios.post(`http://localhost:8080/aktivnosti/${ID}&sudionici`, alert(data))
+    axios.post(`http://localhost:8080/aktivnosti/${ID}?sudionici`, data, {
+    params: {
+      ime: ime
+    }
+  })
       .then(response => {
         alert('Uspješno dodano:', response.data);
         setAssignModalShow(false);
@@ -212,9 +215,10 @@ function Aktivnost() {
   };
   const confirmDeleteParticipant = async () => {
     try {
-      await axios.delete(`http://localhost:8080/aktivnosti/${ID}&sudionici/${alert(participantToDelete)}`);
+      await axios.delete(`http://localhost:8080/aktivnosti/${ID}?sudionici/${alert(JSON.stringify(participantToDelete))}`);
       setDeleteParticipantModalShow(false);
       setReload(!reload);
+      window.location.href = `/aktivnost/${isAdmin}`;
     } catch (error) {
       console.error("Greška prilikom brisanja sudionika:", error);
     }

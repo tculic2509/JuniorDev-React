@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useLocation,useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 
 function Volontiranje() {
@@ -26,9 +26,20 @@ function Volontiranje() {
   const [vrstaVolontiranja, setVrstaVolontiranja] = useState("");
   const [poslovi, setPoslovi] = useState([]);
   const location = useLocation();
-  const {id, isAdmin}=useParams();
+  const { id, isAdmin } = useParams();
   const [filter, setFilter] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredVolonters, setFilteredVolonters] = useState([]);
 
+  function search(searchTerm) {
+    setSearchValue(searchTerm);
+
+    const filtered = volonteri.filter((content) =>
+      content.ime.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredVolonters(filtered);
+  }
   const handleFilter = (e) => {
     setFilter(e.target.value);
   };
@@ -167,7 +178,16 @@ function Volontiranje() {
       <Navbar />
       <div className='App-active'>
         <div className='flex'>
-
+          <label htmlFor="search" className="searchBar">
+            Pronađi: &nbsp;
+            <input
+              id="search"
+              type="text"
+              value={searchValue}
+              placeholder="traži..."
+              onChange={(e) => search(e.target.value)}
+            />
+          </label>
           <div style={{
             maxHeight: "500px",
             overflowY: "auto"
@@ -181,56 +201,71 @@ function Volontiranje() {
                   <th>Ime</th>
                   <th>Dob</th>
                   <th>Grad</th>
-                  {isAdmin=="true" && <th>Opcije</th>}
+                  {isAdmin == "true" && <th>Opcije</th>}
                 </tr>
               </thead>
               <tbody>
-                {filter ? (
-                  filterData(volonteri).map(volonter => (
-                    <tr key={volonter.id}>
-                      <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
-                      <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
-                      <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
-
-                      {isAdmin == "true" && (
-                        <td className="buttons">
-                          <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
-                          <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
-                        </td>
-                      )}
-
-
-                    </tr>
-                  ))
-                ) : (
-                  filter === "" && (
-                    volonteri.map(volonter => (
+                {
+                  filter ? (
+                    // Filtered rendering based on `filter` state
+                    filterData(filteredVolonters).map(volonter => (
                       <tr key={volonter.id}>
                         <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
                         <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
                         <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
-                        {isAdmin == "true" && (
-                        <td className="buttons">
-                          <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
-                          <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
-                        </td>
-                      )}
+                        {isAdmin === "true" && ( // Display buttons only if user is admin
+                          <td className="buttons">
+                            <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
+                            <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
+                          </td>
+                        )}
                       </tr>
                     ))
-                  )
-                )}
+                  ) : filter === "" ? (
+                    filteredVolonters.map(volonter => (
+                      <tr key={volonter.id}>
+                        <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
+                        <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
+                        <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
+                        {isAdmin === "true" && ( 
+                          <td className="buttons">
+                            <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
+                            <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
+                          </td>
+                        )}
+                      </tr>
+                    ))
+                  ) : searchValue ? (
+                    filteredVolonters.map(volonter => (
+                      <tr key={volonter.id}>
+                        <td onClick={() => handleRead(volonter.id)}>{volonter.ime}</td>
+                        <td onClick={() => handleRead(volonter.id)}>{volonter.dob}</td>
+                        <td onClick={() => handleRead(volonter.id)}>{volonter.grad}</td>
+                        {isAdmin === "true" && (
+                          <td className="buttons">
+                            <button onClick={() => handleEditClick(volonter.id)} className="edit">Edit</button>
+                            <button onClick={() => handleDeleteClick(volonter.id)} className='danger margin'>Delete</button>
+                          </td>
+                        )}
+                      </tr>
+                    ))
+                  ) : null 
+                }
+
+
+
 
               </tbody>
             </Table >
           </div>
         </div>
 
-      
-            {isAdmin=="true" && (
-              <Button onClick={handleAddClick} className='dodaj'>Dodaj</Button>
-            )}
-          
-        
+
+        {isAdmin == "true" && (
+          <Button onClick={handleAddClick} className='dodaj'>Dodaj</Button>
+        )}
+
+
       </div>
       <div className='filt'>
         <p>Filtriraj: </p>
