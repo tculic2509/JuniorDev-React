@@ -33,7 +33,7 @@ function Aktivnost() {
   const [readModalShow, setReadModalShow] = useState(false);
   const [korisnikID, setKorisnikID] = useState("");
   const [deleteParticipantModalShow, setDeleteParticipantModalShow] = useState(false);
-  const [participantToDelete, setParticipantToDelete] = useState(null);
+  const [participantToDelete, setParticipantToDelete] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:8080/korisnici")
@@ -77,12 +77,11 @@ function Aktivnost() {
       });
   }, [sortField, sortOrder]);
   useEffect(() => {
-    axios.get(`http://localhost:8080/aktivnosti/${ID}?sudionici?${korisnikID}`)
+    axios.get(`http://localhost:8080/aktivnosti/${ID}&sudionici/${korisnikID}`)
       .then(response => {
         const sudionici = response.data;
         postaviSudionici(sudionici);
-        postaviSudionika(sudionici.sudionici);
-
+        postaviSudionika(sudionici);
       })
       .catch(error => {
         console.error('Greška prilikom dohvaćanja aktivnosti:', error);
@@ -196,7 +195,7 @@ function Aktivnost() {
       ime: ime
     };
 
-    axios.post(`http://localhost:8080/aktivnosti/${ID}&sudionici`, data)
+    axios.post(`http://localhost:8080/aktivnosti/${ID}&sudionici`, alert(data))
       .then(response => {
         alert('Uspješno dodano:', response.data);
         setAssignModalShow(false);
@@ -213,7 +212,7 @@ function Aktivnost() {
   };
   const confirmDeleteParticipant = async () => {
     try {
-      await axios.delete(`http://localhost:8080/aktivnosti/${ID}?sudionici/${participantToDelete}`);
+      await axios.delete(`http://localhost:8080/aktivnosti/${ID}&sudionici/${alert(participantToDelete)}`);
       setDeleteParticipantModalShow(false);
       setReload(!reload);
     } catch (error) {
