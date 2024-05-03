@@ -322,7 +322,7 @@ function Volontiranje() {
       
       <Modal show={addModalShow} onHide={() => setAddModalShow(false)} className="modal" >
         <Modal.Header>
-          <Modal.Title className="modal-title">Dodaj novu aktivnost</Modal.Title>
+          <Modal.Title className="modal-title modal-form-udruga">Dodaj novu aktivnost</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleAddSubmit} className='modal-form-volonter'>

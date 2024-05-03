@@ -298,7 +298,7 @@ function Aktivnost() {
         <Modal.Header>
           <Modal.Title className='modal-form-podaci'>Uredi aktivnost</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className='modal-form-udruga'>
           <form onSubmit={update} className='modal-form-podaci'>
             <label>Naziv:</label>
             <input type="text" value={naziv} onChange={(e) => postaviNaziv(e.target.value)} />
@@ -319,10 +319,10 @@ function Aktivnost() {
 
       <Modal show={addModalShow} onHide={() => setAddModalShow(false)} className="modal" >
         <Modal.Header>
-          <Modal.Title className="modal-form-podaci">Dodaj novu aktivnost</Modal.Title>
+          <Modal.Title className="modal-form">Dodaj novu aktivnost</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleAddSubmit} className='modal-form-podaci'>
+        <Modal.Body className='modal-form-udruga'>
+          <form onSubmit={handleAddSubmit} className='modal-form-udruga'>
             <label>Naziv:</label>
             <input type="text" onChange={(e) => postaviNaziv(e.target.value)} />
             <label>Opis:</label>
@@ -351,9 +351,9 @@ function Aktivnost() {
 
       <Modal show={readModalShow} onHide={() => setReadModalShow(false)} className="modal">
         <Modal.Header>
-          <Modal.Title className='modal-title-podaci'>Podaci</Modal.Title>
+          <Modal.Title className='modal-form-udruga'>Podaci</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className='modal-form-udruga'>
           <form className='modal-form-podaci'>
             <label>Naziv:</label>
             <input type="text" value={naziv} readOnly />

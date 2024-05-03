@@ -132,6 +132,25 @@
           "ime": "Marko Kovač"
         }
       ]
+    },
+    {
+      "id": "3615",
+      "naziv": "Prikljupljanje sredstava",
+      "opis": "Skupljanje novaca",
+      "datum": "2024-05-30",
+      "grad": "Zadar",
+      "udruga": "Edukacija za sve",
+      "lokacija": "Dvorana Krešimira Čosića",
+      "sudionici": [
+        {
+          "id": "1",
+          "ime": "Ana Horvat"
+        },
+        {
+          "id": "2",
+          "ime": "Marko Kovač"
+        }
+      ]
     }
   ],
   "gradovi": [
