@@ -196,14 +196,7 @@
       "telefon": "987-654-3210",
       "grad": "Split",
       "pripadaUdruga": "Zajednica za pravdu",
-      "vrstaVolontiranja": "Čistačica",
-      "ocjene": [
-        5,
-        4,
-        5,
-        3
-      ],
-      "prosjekOcjena": 4.3
+      "vrstaVolontiranja": "Čistačica"
     },
     {
       "id": "3",
@@ -213,13 +206,7 @@
       "telefon": "111-222-3333",
       "grad": "Trogir",
       "pripadaUdruga": "Društvo za mentalno zdravlje",
-      "vrstaVolontiranja": "Prodavač",
-      "ocjene": [
-        2,
-        3,
-        2
-      ],
-      "prosjekOcjena": 2.3
+      "vrstaVolontiranja": "Prodavač"
     },
     {
       "id": "4",
@@ -229,13 +216,7 @@
       "telefon": "444-555-6666",
       "grad": "Trogir",
       "pripadaUdruga": "Zajednica za pravdu",
-      "vrstaVolontiranja": "Prodavač",
-      "ocjene": [
-        2,
-        3,
-        2
-      ],
-      "prosjekOcjena": 2.3
+      "vrstaVolontiranja": "Prodavač"
     },
     {
       "ime": "Marija Kovačić",
@@ -254,14 +235,7 @@
       "telefon": "123-456-7890",
       "grad": "Makarska",
       "pripadaUdruga": "Društvo za mentalno zdravlje",
-      "vrstaVolontiranja": "Učitelj",
-      "ocjene": [
-        5,
-        4,
-        5,
-        3
-      ],
-      "prosjekOcjena": 4.3
+      "vrstaVolontiranja": "Učitelj"
     },
     {
       "id": "7",
@@ -271,14 +245,7 @@
       "telefon": "987-654-3210",
       "grad": "Split",
       "pripadaUdruga": "Društvo za mentalno zdravlje",
-      "vrstaVolontiranja": "Građevinski radnik",
-      "ocjene": [
-        5,
-        4,
-        5,
-        3
-      ],
-      "prosjekOcjena": 4.3
+      "vrstaVolontiranja": "Građevinski radnik"
     },
     {
       "id": "8",
@@ -288,14 +255,7 @@
       "telefon": "111-222-3333",
       "grad": "Šibenik",
       "pripadaUdruga": "Mreža zajedničke hrane",
-      "vrstaVolontiranja": "Razno",
-      "ocjene": [
-        5,
-        5,
-        5,
-        5
-      ],
-      "prosjekOcjena": 5
+      "vrstaVolontiranja": "Razno"
     },
     {
       "id": "9",
@@ -305,14 +265,7 @@
       "telefon": "444-555-6666",
       "grad": "Šibenik",
       "pripadaUdruga": "Društvo Zeleni svijet",
-      "vrstaVolontiranja": "Razno",
-      "ocjene": [
-        5,
-        5,
-        5,
-        5
-      ],
-      "prosjekOcjena": 5
+      "vrstaVolontiranja": "Razno"
     },
     {
       "id": "10",
@@ -322,14 +275,7 @@
       "telefon": "777-888-9999",
       "grad": "Split",
       "pripadaUdruga": "Mreža zajedničke hrane",
-      "vrstaVolontiranja": "Učitelj",
-      "ocjene": [
-        5,
-        5,
-        5,
-        5
-      ],
-      "prosjekOcjena": 5
+      "vrstaVolontiranja": "Učitelj"
     },
     {
       "id": "11",
@@ -339,14 +285,7 @@
       "telefon": "123-456-7890",
       "grad": "Omiš",
       "pripadaUdruga": "Društvo Zeleni svijet",
-      "vrstaVolontiranja": "Građevinski radnik",
-      "ocjene": [
-        4,
-        4,
-        4,
-        4
-      ],
-      "prosjekOcjena": 4
+      "vrstaVolontiranja": "Građevinski radnik"
     },
     {
       "id": "12",
@@ -356,14 +295,7 @@
       "telefon": "987-654-3210",
       "grad": "Split",
       "pripadaUdruga": "Edukacija za sve",
-      "vrstaVolontiranja": "Učitelj",
-      "ocjene": [
-        2,
-        2,
-        2,
-        2
-      ],
-      "prosjekOcjena": 2
+      "vrstaVolontiranja": "Učitelj"
     }
   ],
   "volonterske_udruge": [

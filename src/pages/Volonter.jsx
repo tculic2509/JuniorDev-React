@@ -5,9 +5,8 @@ import { Modal, Button, Table } from "react-bootstrap";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLocation, useParams } from 'react-router-dom';
-import StarRating from '../components/Stars';
 
-function Volontiranje({ postaviOcjenu }) {
+function Volontiranje() {
   const [volonteri, setVolonteri] = useState([]);
   const [korisnici, setKorisnici] = useState([]);
   const [deleteID, setDeleteID] = useState("");
@@ -30,13 +29,7 @@ function Volontiranje({ postaviOcjenu }) {
   const [filter, setFilter] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [filteredVolonters, setFilteredVolonters] = useState([]);
-  const [avgOcjene, setAvgOcjene] = useState({});
-  const [ocjene, setOcjene] = useState({});
 
-  const handleSetOcjena = (volonterId, ocjena) => {
-    setOcjene({ ...ocjene, [volonterId]: ocjena });
-    postaviOcjenu(volonterId, ocjena); 
-  };
 
   function search(searchTerm) {
     setSearchValue(searchTerm);
@@ -100,12 +93,6 @@ function Volontiranje({ postaviOcjenu }) {
         console.error('Greška prilikom dohvaćanja korisnika:', error);
       });
   }, [reload]);
-  useEffect(() => {
-    const ocjeneArray = Object.values(ocjene);
-    const sum = ocjeneArray.reduce((acc, curr) => acc + curr, 0);
-    const avg = ocjeneArray.length > 0 ? sum / ocjeneArray.length : 0;
-    setAvgOcjene(avg.toFixed(2)); // Zaokruži prosjek na dvije decimale
-  }, [ocjene]);
   const handleDeleteClick = (contentId) => {
     setDeleteID(contentId);
     setDeleteModalShow(true);
@@ -318,11 +305,6 @@ function Volontiranje({ postaviOcjenu }) {
                 <option key={job.id} value={job.posao}>{job.posao}</option>
               ))}
             </select>
-            <StarRating
-              ocjena={ocjene[ID] || 0}
-              postaviOcjenu={(ocjena) => handleSetOcjena(ID, ocjena)} 
-            />
-
             <Button type="submit" className='button primary'>
               Spremi promjene
             </Button>
